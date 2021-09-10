@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>HotelBookingWebsite</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%= render 'layouts/navigation' %>
+    <div class="container ">
+    <%= render 'layouts/messages' %>
+    <div class="down-area">
     <%= yield %>
+    </div>
+  </div>
   </body>
 </html>
