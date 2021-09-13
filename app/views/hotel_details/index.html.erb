@@ -23,8 +23,10 @@
         <td><%= hotel_detail.price %></td>
         <td><%= hotel_detail.rooms %></td>
         <td><%= link_to 'Show', hotel_detail %></td>
+        <% if current_user && current_user.admin? %>
         <td><%= link_to 'Edit', edit_hotel_detail_path(hotel_detail) %></td>
         <td><%= link_to 'Destroy', hotel_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -33,3 +35,5 @@
 <br>
 
 <%= link_to 'New Hotel Detail', new_hotel_detail_path %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+

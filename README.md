@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+    <!-- booking = BookingDetail.new(user_id: current_user, hotel_detail_id: params[:hotel_id], total_price: hotel.price, from_date: params[:from], to_date: params[:to]) -->
