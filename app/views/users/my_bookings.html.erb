@@ -27,8 +27,13 @@
         <td><%= @booking_details.total_price %></td>
         <% if Date.today <= @booking_details.from_date - 1  %>
         <td><%= link_to 'Cancel Booking', booking_detail_path(current_user,@booked_hotel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td>
+		<span class="badge badge-secondary">
+			You Cannot Cancel Booking Now
+		</span></td>
+    	<% end %>
       </tr>
-    <% end %>
   </tbody>
 </table>
 <% else %>
