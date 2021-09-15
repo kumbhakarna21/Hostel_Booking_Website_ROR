@@ -1,1 +1,34 @@
 <h1>my bookings</h1>
+
+<table>
+<thead>
+    <tr>
+      <th>Hotel name</th>
+      <th>Address</th>
+      <th>Room type</th>
+      <th>Total Rooms Booked</th>
+      <th>Booked From</th>
+      <th>Booked Till</th>
+      <th>TotalAmount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <tbody>
+ 
+      <tr>
+        <td><%= @booked_hotel.hotel_name %></td>
+        <td><%= @booked_hotel.address %></td>
+        <td><%= @booked_hotel.room_type %></td>
+        <td><%= @booking_details.total_rooms %></td>
+        <td><%= @booking_details.from_date %></td>
+        <td><%= @booking_details.to_date %></td>
+        <td><%= @booking_details.total_price %></td>
+        <% if current_user && current_user.admin? %>
+        <td><%= link_to 'Edit', edit_hotel_detail_path(hotel_detail) %></td>
+        <td><%= link_to 'Destroy', hotel_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>

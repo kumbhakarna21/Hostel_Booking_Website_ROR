@@ -10,7 +10,7 @@ class BookingDetailsController < ApplicationController
 		#reducing Hotel rooms from Hotel detail tables
 		hotel.rooms = (hotel.rooms).to_i - (params[:rooms]).to_i
 
-		booking = BookingDetail.new(user_id: params[:user], hotel_detail_id: params[:hotel_id],total_price: total, from_date: params[:from], to_date: params[:to])
+		booking = BookingDetail.new(user_id: params[:user], hotel_detail_id: params[:hotel_id],total_price: total, from_date: params[:from], to_date: params[:to],total_rooms: params[:rooms])
 		if booking.save && hotel.save
 			flash[:notice] = "Congratulations your Booking was successfully done"
 			redirect_to my_bookings_path
