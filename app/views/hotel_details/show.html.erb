@@ -1,6 +1,9 @@
+<div class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-3">
+      
 
-
-<%= form_tag booking_details_path(user: current_user, hotel_id: @hotel_detail), method: :post do %>
+<%= form_tag booking_details_path(user: current_user, hotel_id: @hotel_detail), class:"form-container form-group", method: :post do %>
 <p>
   <strong>Hotel name:</strong>
   <%= @hotel_detail.hotel_name %>
@@ -26,35 +29,34 @@
   <%= @hotel_detail.rooms %>
 </p>
 <% if current_user && !current_user.admin? %>
-
-  <h5>Enter the Number of rooms to be booked</h5>
+  <div class="row ">
+    <div class="col-12">
+  <strong>Rooms to be booked</strong>
   <div class="form-group ">
   <%= number_field_tag :rooms, params[:rooms], placeholder: "" ,
   autofocus: true, class: "form-control form-control-lg" %>     
   </div>
 
-  <h5>Enter the starting date to be booked</h5>
+  <strong>Booking From</strong>
   <div class="form-group ">
   <%= date_field_tag :from, params[:from], placeholder: "" ,
   autofocus: true, class: "form-control form-control-lg" %>     
   </div>
 
-  <h5>Enter the ending date to be booked</h5>
+  <strong>Booking Till</strong>
   <div class="form-group ">
   <%= date_field_tag :to, params[:to], placeholder: "" ,
   autofocus: true, class: "form-control form-control-lg" %>      
   </div>
-
+  </div>
+  </div>
   <%= button_tag type: :submit, class: "btn btn-success" do %>
   <%= 'Book' %>
   <% end %>
 
-<% end %> 
 <% end %>
 
-
-
-<% if !current_user  %>
+ <% if !current_user  %>
 <%= link_to 'Login', new_user_session_path %> |
 <% end %>
 
@@ -62,4 +64,10 @@
 <% if current_user && current_user.admin? %>
 <%= link_to 'Edit', edit_hotel_detail_path(@hotel_detail) %> |
 <% end %>
-<%= link_to 'Back', hotel_details_path %>
+<%= link_to 'Back', hotel_details_path, class: "btn btn-primary" %>
+
+<!-- form tag end -->
+<% end %>
+</div>
+</div>
+</div>
