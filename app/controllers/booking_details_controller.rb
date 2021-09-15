@@ -21,6 +21,13 @@ class BookingDetailsController < ApplicationController
 		
 	end
 
+	def destroy
+		booking_details = BookingDetail.where(user_id: params[:id], hotel_detail_id: params[:format]).first
+		booking_details.destroy
+		flash[:notice] = "Your Booking was successfully cancelled"
+		redirect_to my_bookings_path
+	end
+
 	private
 
 	def total_price(price_per_day,no_of_rooms,from_date,to_date)

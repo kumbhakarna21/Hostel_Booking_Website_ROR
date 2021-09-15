@@ -1,5 +1,6 @@
-<h1>my bookings</h1>
 
+
+<% if @booking_details %>
 <table>
 <thead>
     <tr>
@@ -24,11 +25,12 @@
         <td><%= @booking_details.from_date %></td>
         <td><%= @booking_details.to_date %></td>
         <td><%= @booking_details.total_price %></td>
-        <% if current_user && current_user.admin? %>
-        <td><%= link_to 'Edit', edit_hotel_detail_path(hotel_detail) %></td>
-        <td><%= link_to 'Destroy', hotel_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-       
+        <% if Date.today <= @booking_details.from_date - 1  %>
+        <td><%= link_to 'Cancel Booking', booking_detail_path(current_user,@booked_hotel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% else %>
+<h1>You have no Bookings Currently</h1>
+<% end %>

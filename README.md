@@ -34,3 +34,6 @@ Things you may want to cover:
         puts dif.to_i
         diff = dif.to_i
         total = (price) * (rom.to_i) * (diff) -->
+
+        <%= link_to 'New Hotel Detail', new_hotel_detail_path %>
+<!-- <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> -->

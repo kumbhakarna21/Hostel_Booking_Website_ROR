@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :booking_details, only: [:create]
+  resources :booking_details, only: [:create, :destroy]
   resources :hotel_details
   devise_for :users
   root 'hotel_details#index'  
