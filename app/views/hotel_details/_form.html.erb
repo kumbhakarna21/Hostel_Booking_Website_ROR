@@ -1,8 +1,9 @@
+
 <%= form_with(model: hotel_detail) do |form| %>
+
   <% if hotel_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(hotel_detail.errors.count, "error") %> prohibited this hotel_detail from being saved:</h2>
-
       <ul>
         <% hotel_detail.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,32 +12,56 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group"> 
     <%= form.label :hotel_name %>
-    <%= form.text_field :hotel_name %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.text_field :hotel_name ,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_area :address %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.text_area :address,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :room_type %>
-    <%= form.text_field :room_type %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.text_field :room_type,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.text_field :price,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :rooms %>
-    <%= form.number_field :rooms %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.number_field :rooms,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  <%= link_to 'Back', hotel_details_path %>
+
 <% end %>
+
