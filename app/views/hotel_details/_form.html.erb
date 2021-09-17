@@ -57,6 +57,15 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= form.label :main_image %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.file_field :main_image, class: "form-control-file" %>
+      </div>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

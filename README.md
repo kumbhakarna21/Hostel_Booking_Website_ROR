@@ -37,3 +37,4 @@ Things you may want to cover:
 
         <%= link_to 'New Hotel Detail', new_hotel_detail_path %>
 <!-- <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> -->
+
