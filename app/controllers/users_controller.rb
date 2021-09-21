@@ -8,4 +8,8 @@ class UsersController < ApplicationController
 		@booking_details = BookingDetail.search(current_user,@booked_hotel)
 		
 	end
+
+	def all_bookings
+		@bookings = BookingDetail.all
+	end
 end
