@@ -1,0 +1,47 @@
+<%= form_with(model: room_detail) do |form| %>
+  <% if room_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(room_detail.errors.count, "error") %> prohibited this room_detail from being saved:</h2>
+
+      <ul>
+        <% room_detail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hotel_detail_id %>
+    <%= form.number_field :hotel_detail_id, readonly: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_type %>
+    <%= form.text_field :room_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per %>
+    <%= form.text_field :price_per %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bed_type %>
+    <%= form.text_field :bed_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_size %>
+    <%= form.text_field :room_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_view %>
+    <%= form.text_field :room_view %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

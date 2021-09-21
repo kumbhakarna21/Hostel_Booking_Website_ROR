@@ -17,7 +17,7 @@ class HotelDetailsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hotel_detail" do
     assert_difference('HotelDetail.count') do
-      post hotel_details_url, params: { hotel_detail: { address: @hotel_detail.address, hotel_name: @hotel_detail.hotel_name, price: @hotel_detail.price, room_type: @hotel_detail.room_type, rooms: @hotel_detail.rooms } }
+      post hotel_details_url, params: { hotel_detail: { address: @hotel_detail.address, hotel_name: @hotel_detail.hotel_name } }
     end
 
     assert_redirected_to hotel_detail_url(HotelDetail.last)
@@ -34,7 +34,7 @@ class HotelDetailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update hotel_detail" do
-    patch hotel_detail_url(@hotel_detail), params: { hotel_detail: { address: @hotel_detail.address, hotel_name: @hotel_detail.hotel_name, price: @hotel_detail.price, room_type: @hotel_detail.room_type, rooms: @hotel_detail.rooms } }
+    patch hotel_detail_url(@hotel_detail), params: { hotel_detail: { address: @hotel_detail.address, hotel_name: @hotel_detail.hotel_name } }
     assert_redirected_to hotel_detail_url(@hotel_detail)
   end
 

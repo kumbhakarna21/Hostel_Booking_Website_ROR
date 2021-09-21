@@ -16,9 +16,6 @@ class HotelDetailsTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @hotel_detail.address
     fill_in "Hotel name", with: @hotel_detail.hotel_name
-    fill_in "Price", with: @hotel_detail.price
-    fill_in "Room type", with: @hotel_detail.room_type
-    fill_in "Rooms", with: @hotel_detail.rooms
     click_on "Create Hotel detail"
 
     assert_text "Hotel detail was successfully created"
@@ -31,9 +28,6 @@ class HotelDetailsTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @hotel_detail.address
     fill_in "Hotel name", with: @hotel_detail.hotel_name
-    fill_in "Price", with: @hotel_detail.price
-    fill_in "Room type", with: @hotel_detail.room_type
-    fill_in "Rooms", with: @hotel_detail.rooms
     click_on "Update Hotel detail"
 
     assert_text "Hotel detail was successfully updated"

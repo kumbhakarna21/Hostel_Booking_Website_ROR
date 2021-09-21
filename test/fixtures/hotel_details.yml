@@ -3,13 +3,7 @@
 one:
   hotel_name: MyString
   address: MyText
-  room_type: MyString
-  price: 9.99
-  rooms: 1
 
 two:
   hotel_name: MyString
   address: MyText
-  room_type: MyString
-  price: 9.99
-  rooms: 1

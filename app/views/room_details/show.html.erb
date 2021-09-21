@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hotel detail:</strong>
+  <%= @room_detail.hotel_detail_id %>
+</p>
+
+<p>
+  <strong>Room type:</strong>
+  <%= @room_detail.room_type %>
+</p>
+
+<p>
+  <strong>Price per:</strong>
+  <%= @room_detail.price_per %>
+</p>
+
+<p>
+  <strong>Bed type:</strong>
+  <%= @room_detail.bed_type %>
+</p>
+
+<p>
+  <strong>Room size:</strong>
+  <%= @room_detail.room_size %>
+</p>
+
+<p>
+  <strong>Room view:</strong>
+  <%= @room_detail.room_view %>
+</p>
+
+<%= link_to 'Edit', edit_room_detail_path(@room_detail) %> |
+<%= link_to 'Back', room_details_path %>
