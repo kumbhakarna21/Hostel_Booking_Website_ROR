@@ -1,4 +1,4 @@
-<%= form_with(model: room_detail) do |form| %>
+<%= form_with(model: room_detail, validate: true) do |form| %>
   <% if room_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(room_detail.errors.count, "error") %> prohibited this room_detail from being saved:</h2>
@@ -11,34 +11,67 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :hotel_detail_id %>
+    <div class="row">
+      <div class="col-3">
     <%= form.number_field :hotel_detail_id, readonly: true %>
+     </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :room_type %>
-    <%= form.text_field :room_type %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.select :room_type, ['Junior Suite','Suite Room','Ex Deluxe Room','Ex Twin Room','Ex King Suite']  %>
+     </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :price_per %>
+  <div class="form-group">
+    <%= form.label :price_per_night %>
+    <div class="row">
+      <div class="col-3">
     <%= form.text_field :price_per %>
+     </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :bed_type %>
-    <%= form.text_field :bed_type %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.select :bed_type, ['King Bed','Double Bed','Single Bed','Twin Bed'] %>
+     </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :room_size %>
+  <div class="form-group">
+    <%= form.label :room_size_in_sq_ft %>
+    <div class="row">
+      <div class="col-3">
     <%= form.text_field :room_size %>
+     </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :room_view %>
-    <%= form.text_field :room_view %>
+    <div class="row">
+      <div class="col-3">
+      <%= form.select :room_view, ['City View','Mountain View','River View'] %>
+     </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :images %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.file_field :images, multiple: true,  class: "form-control-file" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">

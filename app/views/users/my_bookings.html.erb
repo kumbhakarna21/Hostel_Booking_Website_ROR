@@ -30,7 +30,7 @@
                   <table class="table table-stripped">
                     <thead>
                       <tr class="bg-info">
-                        <td>Booking Confirmation No</td>
+                        <td>Booking Confirm No</td>
                         <td></td>
                         <td><%= @booking_details.id %></td>
                       </tr>
@@ -39,41 +39,36 @@
                       <tr >
                         <td>Hotel Name</td>
                         <td></td>
-                        <td><%= @booked_hotel.hotel_name %></td>
+                        <td><%= @hotel_details.hotel_name %></td>
                       </tr>
                       <tr >
                         <td>Address</td>
                         <td></td>
-                        <td><%= @booked_hotel.address %></td>
+                        <td><%= @hotel_details.address %></td>
                       </tr>
                       <tr>
                         <td>Room type</td>
                         <td></td>
-                        <td><%= @booked_hotel.room_type %></td>
-                      </tr>
-                      <tr>
-                        <td>Total Rooms Booked</td>
-                        <td></td>
-                        <td><%= @booking_details.total_rooms %></td>
+                        <td><%= @booked_room.room_type %></td>
                       </tr>
                       <tr>
                         <td>Booked From</td>
                         <td></td>
-                        <td><%= @booking_details.from_date %></td>
+                        <td><%= @booking_details.from %></td>
                       </tr>
                       <tr>
                         <td>Booked Till</td>
                         <td></td>
-                        <td><%= @booking_details.to_date %></td>
+                        <td><%= @booking_details.to %></td>
                       </tr>
                       <tr>
                         <td><strong>Total Amount</strong></td>
                         <td></td>
-                        <td><%= @booking_details.total_price %>&nbsp&nbspRs</td>
+                        <td><%= @booking_details.total_price %></td>
                       </tr>
                       <tr>
-                        <% if Date.today <= @booking_details.from_date - 1  %>
-                        <td><%= link_to 'Cancel Booking', booking_detail_path(current_user,@booked_hotel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% if Date.today <= @booking_details.from - 1  %>
+                        <td><%= link_to 'Cancel Booking', booking_detail_path(current_user,@booked_room), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         <% else %>
                         <td>
                           <span class="badge badge-secondary">

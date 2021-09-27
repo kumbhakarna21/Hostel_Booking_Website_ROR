@@ -2,14 +2,14 @@
 
 one:
   user: one
-  hotel_detail: one
+  room_detail: one
   total_price: 9.99
-  from_date: 2021-09-12
-  to_date: 2021-09-12
+  from: 2021-09-23
+  to: 2021-09-23
 
 two:
   user: two
-  hotel_detail: two
+  room_detail: two
   total_price: 9.99
-  from_date: 2021-09-12
-  to_date: 2021-09-12
+  from: 2021-09-23
+  to: 2021-09-23

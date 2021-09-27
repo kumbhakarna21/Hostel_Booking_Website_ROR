@@ -8,7 +8,7 @@ class RoomDetailsController < ApplicationController
 
   # GET /room_details/1 or /room_details/1.json
   def show
-    
+    @hotel_details = @room_detail.hotel_detail
   end
 
   # GET /room_details/new
@@ -23,6 +23,7 @@ class RoomDetailsController < ApplicationController
 
   # POST /room_details or /room_details.json
   def create
+
     @room_detail = RoomDetail.new(room_detail_params)
 
     respond_to do |format|
@@ -53,7 +54,7 @@ class RoomDetailsController < ApplicationController
   def destroy
     @room_detail.destroy
     respond_to do |format|
-      format.html { redirect_to room_details_url, notice: "Room detail was successfully destroyed." }
+      format.html { redirect_to hotel_details_url, notice: "Room detail was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,6 +67,6 @@ class RoomDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_detail_params
-      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view)
+      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view, images: [])
     end
 end

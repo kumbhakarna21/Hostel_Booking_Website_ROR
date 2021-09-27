@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-3">
 
+<%= form_tag booking_details_path(user: current_user, room_id: @room_detail), class:"form-container form-group", method: :post do %>
 <p>
-  <strong>Hotel detail:</strong>
-  <%= @room_detail.hotel_detail_id %>
+  <strong>Hotel Name:</strong>
+  <%= @hotel_details.hotel_name %>
 </p>
 
 <p>
@@ -29,6 +32,41 @@
   <strong>Room view:</strong>
   <%= @room_detail.room_view %>
 </p>
+<% if current_user && !current_user.admin? %>
+  <div class="row ">
+    <div class="col-12">
+  
 
+  <strong>Booking From</strong>
+  <div class="form-group ">
+  <%= date_field_tag :from, params[:from], placeholder: "" ,
+  autofocus: true, class: "form-control form-control-lg" %>     
+  </div>
+
+  <strong>Booking Till</strong>
+  <div class="form-group ">
+  <%= date_field_tag :to, params[:to], placeholder: "" ,
+  autofocus: true, class: "form-control form-control-lg" %>      
+  </div>
+  </div>
+  </div>
+  <%= button_tag type: :submit, class: "btn btn-success" do %>
+  <%= 'Book' %>
+  <% end %>
+
+<% end %>
+
+ <% if !current_user  %>
+<%= link_to 'Login', new_user_session_path, class: "btn btn-success" %> |
+<% end %>
+
+
+<% if current_user && current_user.admin? %>
 <%= link_to 'Edit', edit_room_detail_path(@room_detail) %> |
-<%= link_to 'Back', room_details_path %>
+<% end %>
+<%= link_to 'Back', hotel_detail_path(@room_detail.hotel_detail_id), class: "btn btn-primary" %>
+
+<% end %>
+</div>
+</div>
+</div>

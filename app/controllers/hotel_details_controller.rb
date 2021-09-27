@@ -8,7 +8,8 @@ class HotelDetailsController < ApplicationController
 
   # GET /hotel_details/1 or /hotel_details/1.json
   def show
-
+    @minimum_price = @hotel_detail.room_details.minimum(:price_per).to_i
+    @minimum_price_gst = (@minimum_price * 0.12).round()
     @room_details = RoomDetail.where(hotel_detail_id: params[:id])
   end
 
@@ -66,6 +67,6 @@ class HotelDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hotel_detail_params
-      params.require(:hotel_detail).permit(:hotel_name, :address)
+      params.require(:hotel_detail).permit(:hotel_name, :address, :main_image)
     end
 end

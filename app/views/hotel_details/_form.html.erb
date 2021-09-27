@@ -1,4 +1,4 @@
-<%= form_with(model: hotel_detail) do |form| %>
+<%= form_with(model: hotel_detail, validate: true) do |form| %>
   <% if hotel_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(hotel_detail.errors.count, "error") %> prohibited this hotel_detail from being saved:</h2>
@@ -11,14 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group"> 
     <%= form.label :hotel_name %>
-    <%= form.text_field :hotel_name %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.text_field :hotel_name ,class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_area :address %>
+    <div class="row">
+      <div class="col-3">
+    <%= form.text_area :address,class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :main_image %>
+    <div class="row">
+      <div class="col-3">
+        <%= form.file_field :main_image, class: "form-control-file" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
