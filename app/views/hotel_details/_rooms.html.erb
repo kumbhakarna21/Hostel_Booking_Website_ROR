@@ -12,7 +12,7 @@
   <% @room_details.each do |room_detail| %>
   <div class="row my-row-he">
     <div class="col-xl-8 my-col">
-      <div class="img-container">
+        <div class="img-container">
               <div id="carousel_<%= room_detail.id %>" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
               <% (0...room_detail.images.count).each do |image| %>
@@ -43,7 +43,18 @@
       </div>
         <div class="col-xl-6">
           </br></br>
-          <%= link_to 'Show', room_detail, class: "btn btn-primary" %>
+          <%= link_to 'Book', room_detail, class: "btn btn-success" %>
+          
+            <%#= link_to 'Details', services_path,  {remote: :true, 'data-toggle':  "modal", 'data-target': '#modal-window', class: 'btn btn-primary'}  %>
+            <%= link_to 'Details', details_path(id: room_detail), class: 'btn btn-primary'  %>
+            <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                  <%#= render 'room_details/services', locals: {room: room_detail} %>
+                  <%= render :partial => "room_details/services", :locals => { :room => room_detail } %>
+                </div>
+              </div>
+            </div>
           <% if current_user && current_user.admin? %>
           <%= link_to 'Edit', edit_room_detail_path(room_detail), class: "btn btn-light" %>
           <%= link_to 'Destroy', room_detail, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-light" %>

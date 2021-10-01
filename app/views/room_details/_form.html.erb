@@ -63,9 +63,19 @@
       <%= form.select :room_view, ['City View','Mountain View','River View'] %>
      </div>
     </div>
-  </div>
+  </div></br>
 
-  <div class="form-group">
+    <h6>Room Amenities</h6>
+    <div class="row form-check form-check-inline">
+      <% RoomDetail::SERVICES.each do |key| %>
+      <div class="col-3">
+        <%= form.check_box :services, { multiple: true, checked: form.object.services&.include?(key.to_s) }, key , nil %>
+        <%= form.label key %>
+      </div>
+    <% end %>
+    </div></br></br>
+
+    <div class="form-group">
     <%= form.label :images %>
     <div class="row">
       <div class="col-3">

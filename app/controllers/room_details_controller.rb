@@ -1,5 +1,5 @@
 class RoomDetailsController < ApplicationController
-  before_action :set_room_detail, only: %i[ show edit update destroy ]
+  before_action :set_room_detail, only: %i[ show edit update destroy details]
 
   # GET /room_details or /room_details.json
   def index
@@ -15,6 +15,18 @@ class RoomDetailsController < ApplicationController
   def new
     hotelid = params[:format].to_i
     @room_detail = RoomDetail.new(hotel_detail_id: hotelid)
+  end
+
+  def services
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def details
+    
   end
 
   # GET /room_details/1/edit
@@ -67,6 +79,6 @@ class RoomDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_detail_params
-      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view, images: [])
+      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view, services: [], images: [])
     end
 end
