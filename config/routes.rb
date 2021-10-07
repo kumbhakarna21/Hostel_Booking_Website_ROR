@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :master_services
   resources :booking_details
   resources :room_details
   resources :hotel_details

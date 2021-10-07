@@ -1,0 +1,27 @@
+
+
+<h1>Master Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Services</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @master_services.each do |master_service| %>
+      <tr>
+        <td><%= master_service.service %></td>
+        <td><%= link_to 'Show', master_service %></td>
+        <td><%= link_to 'Edit', edit_master_service_path(master_service) %></td>
+        <td><%= link_to 'Destroy', master_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Master Service', new_master_service_path %>

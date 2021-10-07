@@ -67,12 +67,16 @@
 
     <h6>Room Amenities</h6>
     <div class="row form-check form-check-inline">
-      <% RoomDetail::SERVICES.each do |key| %>
-      <div class="col-3">
-        <%= form.check_box :services, { multiple: true, checked: form.object.services&.include?(key.to_s) }, key , nil %>
-        <%= form.label key %>
+        <%= form.collection_check_boxes :master_services, MasterService.all, :id, :service do |b| %>
+        <div class="collection-check-box ">
+           <div class="col-3">
+
+         <%= b.check_box %>
+         <%= b.label %>
+        </div>
       </div>
-    <% end %>
+
+        <% end %>
     </div></br></br>
 
     <div class="form-group">

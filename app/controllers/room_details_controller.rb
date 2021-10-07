@@ -35,11 +35,20 @@ class RoomDetailsController < ApplicationController
 
   # POST /room_details or /room_details.json
   def create
-
-    @room_detail = RoomDetail.new(room_detail_params)
-
+    ms = room_detail_params.fetch("master_services")
+    room_params = room_detail_params.except("master_services")
+    # byebug
+    @room_detail = RoomDetail.new(room_params)
     respond_to do |format|
       if @room_detail.save
+
+            if ms.present?
+                ms.reject(&:empty?).each do |m|
+                  # byebug
+                RoomService.create(room_detail_id: @room_detail.id,master_service_id: m.to_i)
+              end
+           end
+
         format.html { redirect_to @room_detail, notice: "Room detail was successfully created." }
         format.json { render :show, status: :created, location: @room_detail }
       else
@@ -79,6 +88,6 @@ class RoomDetailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_detail_params
-      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view, services: [], images: [])
+      params.require(:room_detail).permit(:hotel_detail_id, :room_type, :price_per, :bed_type, :room_size, :room_view,master_services: [], images: [])
     end
 end

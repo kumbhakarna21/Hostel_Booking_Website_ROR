@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_173614) do
+ActiveRecord::Schema.define(version: 2021_10_01_122053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 2021_09_27_173614) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "master_services", force: :cascade do |t|
+    t.string "service"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "room_details", force: :cascade do |t|
     t.bigint "hotel_detail_id", null: false
     t.string "room_type"
@@ -73,6 +79,15 @@ ActiveRecord::Schema.define(version: 2021_09_27_173614) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "services", default: [], array: true
     t.index ["hotel_detail_id"], name: "index_room_details_on_hotel_detail_id"
+  end
+
+  create_table "room_services", force: :cascade do |t|
+    t.bigint "room_detail_id", null: false
+    t.bigint "master_service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["master_service_id"], name: "index_room_services_on_master_service_id"
+    t.index ["room_detail_id"], name: "index_room_services_on_room_detail_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +110,6 @@ ActiveRecord::Schema.define(version: 2021_09_27_173614) do
   add_foreign_key "booking_details", "room_details"
   add_foreign_key "booking_details", "users"
   add_foreign_key "room_details", "hotel_details"
+  add_foreign_key "room_services", "master_services"
+  add_foreign_key "room_services", "room_details"
 end
